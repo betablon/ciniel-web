@@ -1,0 +1,30 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "title": "Hero · colour · import", "x": 0, "y": 0, "w": 1440, "h": 3400 },
+    { "file": "DetailTour.dc.html", "title": "The film tour (scroll inside it)", "x": 1600, "y": 0, "w": 1440, "h": 900, "is_interactive": true }
+  ],
+  "annotations": [
+    {
+      "id": "brief",
+      "x": 0,
+      "y": -280,
+      "w": 780,
+      "text": "CINIEL — the approved direction. The six earlier explorations are gone.\nBuilt on the real screens. The app is polychrome — every screen takes its tint from the film's artwork — so the page tints per section rather than holding one red. Cream ticket stock is the second surface, and serif appears only on it. Type is New York + SF Pro + SF Mono, which the page gets for free on Apple devices via ui-serif / -apple-system / ui-monospace.\nThis canvas is now the design record. The built site lives in website/ and is the source of truth from here."
+    },
+    {
+      "id": "note-main",
+      "x": 0,
+      "y": 3460,
+      "w": 700,
+      "text": "HERO. The journal is shown whole, in a frame — the cropped edge-bleed is gone; it read as a broken image rather than a deliberate crop, and it exposed the app's own navigation chrome mid-cut.\nSECOND SECTION is the polychrome argument, and it only works with real screens: Library, a film, and Discover, each with an ambient glow in that screen's own colour.\nTHIRD is import — the cream tickets given a desktop treatment, with the real 'Is this you?' confirmation beside them.\nCopy: the Trakt line is 'costs you no connection at all', never a slot count — see docs/monetization-plan.md §6."
+    },
+    {
+      "id": "note-tour",
+      "x": 1600,
+      "y": 960,
+      "w": 700,
+      "text": "THE FILM TOUR. Scroll INSIDE this artboard.\nThe device pins while the page scrolls; the phone's own content moves in step; the copy crossfades as each section passes and the rail tracks position. Nothing is scroll-hijacked — the frame is just sticky.\nThe top of what scrolls is the real Mario Galaxy screen; below its cut-off the page continues in HTML in the same tint, because the screenshot only covers one viewport. One tall screenshot of the whole detail view makes it fully real.\nThe built version in website/ adds the reduced-motion fallback and the mobile stack this artboard doesn't have."
+    }
+  ],
+  "launch": { "view": "canvas" }
+}

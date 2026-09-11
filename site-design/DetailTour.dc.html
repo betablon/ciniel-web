@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; }
+    a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    a:hover { color: #FFFFFF; }
+    .sf   { font-family: -apple-system, "SF Pro Display", "SF Pro Text", "Helvetica Neue", system-ui, sans-serif; }
+    .mono { font-family: ui-monospace, "SF Mono", Menlo, "Roboto Mono", monospace; }
+    .lbl  { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .num  { font-variant-numeric: tabular-nums; }
+    .cap  { transition: opacity 420ms ease, transform 420ms ease; }
+    .rail-row { transition: color 300ms ease; }
+    .rail-bar { transition: background 300ms ease; }
+    .sect { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 32px; }
+    #tour-scroll { scrollbar-width: none; }
+    #tour-scroll::-webkit-scrollbar { width: 0; height: 0; }
+  </style>
+</helmet>
+
+<div id="tour-scroll" class="sf" style="width: 1440px; height: 900px; overflow-y: auto; overflow-x: hidden; background: #000000; color: #FFFFFF; position: relative;">
+  <div style="height: 3300px; position: relative;">
+    <div style="position: sticky; top: 0; height: 900px; overflow: hidden;">
+
+      <!-- ambient tint, taken from this film's own artwork -->
+      <div style="position: absolute; top: -180px; right: -140px; width: 1000px; height: 900px; background: radial-gradient(closest-side, rgba(104,66,182,0.5), rgba(104,66,182,0) 100%); pointer-events: none;"></div>
+      <div style="position: absolute; bottom: -300px; left: -160px; width: 800px; height: 700px; background: radial-gradient(closest-side, rgba(48,36,92,0.45), rgba(48,36,92,0) 100%); pointer-events: none;"></div>
+
+      <!-- ── left: the tour copy ─────────────────────────── -->
+      <div style="position: absolute; left: 88px; top: 168px; width: 500px; z-index: 3;">
+
+        <div class="mono lbl" style="color: #E7222E; font-weight: 600;">One film, top to bottom</div>
+
+        <div style="position: relative; height: 300px; margin-top: 26px;">
+
+          <div id="cap-0" class="cap" style="position: absolute; inset: 0; opacity: 1;">
+            <div style="font-size: 46px; line-height: 1.04; font-weight: 700; letter-spacing: -0.035em;">Every film brings its own colour.</div>
+            <div style="font-size: 18px; line-height: 1.6; color: rgba(255,255,255,0.62); margin-top: 20px;">Ciniel reads the palette out of the artwork and tints the whole page to it — the buttons, the rating badge, the ground it all sits on. No two films look the same.</div>
+          </div>
+
+          <div id="cap-1" class="cap" style="position: absolute; inset: 0; opacity: 0; transform: translateY(14px);">
+            <div style="font-size: 46px; line-height: 1.04; font-weight: 700; letter-spacing: -0.035em;">Everything you'd otherwise go looking for.</div>
+            <div style="font-size: 18px; line-height: 1.6; color: rgba(255,255,255,0.62); margin-top: 20px;">Cast and crew, runtime, release, the tagline, the collection it belongs to. One page, no tab hunting, and fetched once rather than every time you open it.</div>
+          </div>
+
+          <div id="cap-2" class="cap" style="position: absolute; inset: 0; opacity: 0; transform: translateY(14px);">
+            <div style="font-size: 46px; line-height: 1.04; font-weight: 700; letter-spacing: -0.035em;">Every time you've seen it.</div>
+            <div style="font-size: 18px; line-height: 1.6; color: rgba(255,255,255,0.62); margin-top: 20px;">Each watch keeps its own date and its own place — the sofa, or a cinema you can name. Re-watches stack up instead of overwriting the one before.</div>
+          </div>
+
+          <div id="cap-3" class="cap" style="position: absolute; inset: 0; opacity: 0; transform: translateY(14px);">
+            <div style="font-size: 46px; line-height: 1.04; font-weight: 700; letter-spacing: -0.035em;">What you thought, in your own words.</div>
+            <div style="font-size: 18px; line-height: 1.6; color: rgba(255,255,255,0.62); margin-top: 20px;">Your rating sits beside everyone else's, your review stays yours, and the rest of the collection is one tap away.</div>
+          </div>
+
+        </div>
+
+        <!-- rail -->
+        <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 44px;">
+          <div id="rail-0" class="rail-row mono lbl" style="display: flex; align-items: center; gap: 14px; color: #FFFFFF;">
+            <div class="rail-bar" style="width: 40px; height: 2px; background: #E7222E;"></div><span>Artwork</span>
+          </div>
+          <div id="rail-1" class="rail-row mono lbl" style="display: flex; align-items: center; gap: 14px; color: rgba(255,255,255,0.32);">
+            <div class="rail-bar" style="width: 40px; height: 2px; background: rgba(255,255,255,0.22);"></div><span>Cast &amp; details</span>
+          </div>
+          <div id="rail-2" class="rail-row mono lbl" style="display: flex; align-items: center; gap: 14px; color: rgba(255,255,255,0.32);">
+            <div class="rail-bar" style="width: 40px; height: 2px; background: rgba(255,255,255,0.22);"></div><span>Your watches</span>
+          </div>
+          <div id="rail-3" class="rail-row mono lbl" style="display: flex; align-items: center; gap: 14px; color: rgba(255,255,255,0.32);">
+            <div class="rail-bar" style="width: 40px; height: 2px; background: rgba(255,255,255,0.22);"></div><span>Ratings &amp; collection</span>
+          </div>
+        </div>
+
+        <div id="hint" class="mono lbl" style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.4); margin-top: 40px; transition: opacity 300ms ease;">
+          <svg width="14" height="18" viewBox="0 0 14 18" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"><path d="M7 2v13M2.5 10.5L7 15l4.5-4.5"></path></svg>
+          <span>Scroll</span>
+        </div>
+      </div>
+
+      <!-- ── right: the device ───────────────────────────── -->
+      <div style="position: absolute; right: 150px; top: 62px; z-index: 3;">
+        <div style="width: 382px; height: 776px; border-radius: 48px; background: #0A0A0C; border: 1px solid rgba(255,255,255,0.14); padding: 11px; box-shadow: 0 50px 110px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.05) inset;">
+          <div style="width: 360px; height: 782px; border-radius: 38px; overflow: hidden; background: #171129; position: relative;">
+
+            <div id="tour-inner" style="position: absolute; top: 0; left: 0; width: 360px; will-change: transform;">
+
+              <!-- The whole film page as one image, stitched from five
+                   overlapping screenshots by stitch.py. -->
+              <img src="detail-full.jpg" alt="" style="width: 360px; display: block;">
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  componentDidMount() {
+    const doc = document;
+    const scroller = doc.getElementById("tour-scroll");
+    const inner = doc.getElementById("tour-inner");
+    if (!scroller || !inner || scroller.getAttribute("data-bound") === "1") return;
+    scroller.setAttribute("data-bound", "1");
+
+    const VIEWPORT = 782;              // the phone screen's own height
+    const bands = [0, 0.33, 0.62, 0.82];
+    const caps = [0, 1, 2, 3].map((i) => doc.getElementById("cap-" + i));
+    const rails = [0, 1, 2, 3].map((i) => doc.getElementById("rail-" + i));
+    const hint = doc.getElementById("hint");
+
+    // Measured rather than hard-coded: the screenshot's real height only
+    // settles once it has decoded, and a wrong constant either stops the
+    // content short or scrolls past its end.
+    let range = 0;
+    const measure = () => {
+      range = Math.max(0, inner.offsetHeight - VIEWPORT);
+    };
+
+    const update = () => {
+      const max = scroller.scrollHeight - scroller.clientHeight;
+      const p = max > 0 ? Math.min(1, Math.max(0, scroller.scrollTop / max)) : 0;
+      inner.style.transform = "translateY(" + (-p * range).toFixed(1) + "px)";
+
+      let active = 0;
+      for (let i = 0; i < bands.length; i++) { if (p >= bands[i]) active = i; }
+
+      caps.forEach((el, i) => {
+        if (!el) return;
+        const on = i === active;
+        // Staggered, not simultaneous: the outgoing line clears fast and the
+        // incoming one waits for it. Crossfading both at once leaves two
+        // headlines legible on top of each other for a third of a second,
+        // which reads as a rendering fault rather than a transition.
+        el.style.transition = on
+          ? "opacity 340ms ease 150ms, transform 340ms ease 150ms"
+          : "opacity 150ms ease, transform 150ms ease";
+        el.style.opacity = on ? "1" : "0";
+        el.style.transform = on ? "translateY(0)" : "translateY(14px)";
+      });
+      rails.forEach((el, i) => {
+        if (!el) return;
+        el.style.color = i === active ? "#FFFFFF" : "rgba(255,255,255,0.32)";
+        const bar = el.firstElementChild;
+        if (bar) bar.style.background = i === active ? "#E7222E" : "rgba(255,255,255,0.22)";
+      });
+      if (hint) hint.style.opacity = p > 0.02 ? "0" : "1";
+    };
+
+    const remeasure = () => { measure(); update(); };
+    remeasure();
+    scroller.addEventListener("scroll", update, { passive: true });
+    if (typeof ResizeObserver === "function") {
+      new ResizeObserver(remeasure).observe(inner);
+    }
+    Array.prototype.forEach.call(inner.querySelectorAll("img"), (img) => {
+      if (!img.complete) img.addEventListener("load", remeasure, { once: true });
+    });
+  }
+
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
