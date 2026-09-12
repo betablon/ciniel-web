@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
-Static dev server for website/, with the one behaviour `python -m http.server`
+Static dev server for docs/, with the one behaviour `python -m http.server`
 lacks: extensionless URLs.
 
-The site links to /impressum, /privacy and /terms — no .html — because that is
-what Netlify, Vercel and Cloudflare Pages serve. The stdlib handler resolves
+The site lives in docs/ because GitHub Pages publishes `main` → `/docs`. It
+links to /impressum, /privacy and /terms — no .html — because that is what
+GitHub Pages serves for a .html file. The stdlib handler resolves
 paths literally and 404s on all three, so local browsing disagrees with
 production about which links work. This resolves /foo to foo.html when the bare
 path has no file of its own, and nothing else.
@@ -17,7 +18,7 @@ import sys
 from functools import partial
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
-ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "website")
+ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "docs")
 
 
 class Handler(SimpleHTTPRequestHandler):
