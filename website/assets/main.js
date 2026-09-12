@@ -23,12 +23,15 @@
   }
 
   /* ── legal pages: one language at a time ───────────────
-     The Impressum carries the same notice twice, in English and German,
+     Each legal page carries its text twice, in English and German,
      because both have to be on the page. Reading it should not mean
      scrolling past a translation you can't use — so with scripting on,
      the two jump links become a switch and only one half is shown. The
      divider between them exists purely to separate the stacked
-     languages, so it goes away with them.                            */
+     languages, so it goes away with them.
+
+     Section anchors are prefixed with their language (#de-rechte), so a
+     deep link names the half it lives in and can switch to it.       */
 
   var langSwitch = document.querySelector("[data-lang-switch]");
   if (langSwitch) {
@@ -62,13 +65,25 @@
     // A hash wins — someone was linked straight to one language. Otherwise
     // follow the browser, and fall back to English.
     var fromHash = function () {
-      var h = location.hash;
-      return h === "#de" || h === "#en" ? h.slice(1) : null;
+      var m = /^#(en|de)(?:-|$)/.exec(location.hash);
+      return m ? m[1] : null;
     };
 
     showLang(
       fromHash() || (/^de\b/i.test(navigator.language || "") ? "de" : "en")
     );
+
+    // The browser tried to jump to a deep link before this ran, while the
+    // section was still in a hidden panel — so it went nowhere. Now that
+    // the right half is showing, finish the jump it couldn't make.
+    // (Instant, not smooth: the stylesheet turns smooth scrolling off on
+    // legal pages for exactly this jump — see `html:has(.legal)`. A bare
+    // #en / #de needs no help: the browser re-applies that jump itself once
+    // the page has loaded, and the panel's scroll-margin clears the nav.)
+    if (location.hash.length > 3) {
+      var target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (target) target.scrollIntoView();
+    }
 
     // Arriving at #de from a link elsewhere is a same-document navigation:
     // nothing reloads and this script never runs again, so the page would

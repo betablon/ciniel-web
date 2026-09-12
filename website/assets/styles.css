@@ -394,6 +394,14 @@ ul, ol { padding: 0; list-style: none; }
    treatment the marketing page earns would only get in the way here. */
 
 .legal { padding: clamp(104px, 12vw, 168px) 0 clamp(72px, 9vw, 112px); }
+/* No smooth scroll on legal pages. A contents link here crosses thousands
+   of pixels, which animates as a lurch rather than a glide — and on a deep
+   link the browser starts that animation towards where the section sat
+   before main.js folded the other language away, then lands there late,
+   long after the script has put the reader in the right place. */
+html:has(.legal) { scroll-behavior: auto; }
+/* Clear the sticky nav when a link lands on a language (/terms#de). */
+[data-lang-panel] { scroll-margin-top: 100px; }
 .legal__wrap { max-width: 720px; }
 .langswitch { display: flex; gap: 24px; margin-top: 10px; }
 .langswitch__opt {
@@ -408,10 +416,53 @@ ul, ol { padding: 0; list-style: none; }
 .legal__group .h4 { margin-bottom: 10px; }
 .legal__group .body { font-size: 16px; max-width: none; }
 .legal__group + .legal__group { padding-top: 4px; }
+.legal__group .body + .body { margin-top: 10px; }
 .legal address { font-style: normal; font-size: 16px; line-height: 1.7; color: var(--ink-2); }
 .legal__rule { margin: clamp(60px, 8vw, 96px) 0 0; border: 0; border-top: 1px solid var(--hair); }
 .legal__link { color: var(--ink); border-bottom: 1px solid var(--ink-4); word-break: break-word; }
 .legal__link:hover { border-bottom-color: var(--ink); }
+
+/* The Impressum is a handful of labelled facts and uses .legal__group.
+   Privacy and terms are documents — running prose, lists, numbered
+   sections — so they get element styles under .legal__doc instead of a
+   class on every paragraph. */
+.legal__meta { margin-top: 18px; color: var(--ink-3); }
+.legal__summary {
+  margin-top: 36px; padding: 24px 26px;
+  border: 1px solid var(--hair); border-radius: 16px; background: var(--fill);
+}
+.legal__summary .h4 { margin-bottom: 12px; }
+.legal__toc {
+  margin-top: 36px; padding-top: 22px; border-top: 1px solid var(--hair);
+  columns: 2 16em; column-gap: 32px;
+}
+.legal__toc li { break-inside: avoid; padding: 3px 0; }
+.legal__toc a { font-size: 15px; color: var(--ink-3); transition: color .2s ease; }
+.legal__toc a:hover { color: var(--ink); }
+
+.legal__doc h2 {
+  margin-top: 56px; scroll-margin-top: 100px;
+  font-size: 21px; line-height: 1.3; font-weight: 650; letter-spacing: -.02em;
+}
+.legal__doc h3 { margin-top: 30px; font-size: 17px; font-weight: 650; letter-spacing: -.015em; }
+.legal__doc p,
+.legal__doc li { font-size: 16px; line-height: 1.65; color: var(--ink-2); }
+.legal__doc :is(h2, h3) + :is(p, ul, address) { margin-top: 12px; }
+.legal__doc :is(p, ul, address) + :is(p, ul, address) { margin-top: 14px; }
+.legal__doc ul { padding-left: 1.2em; list-style: disc; }
+.legal__doc ul li + li { margin-top: 8px; }
+.legal__doc li::marker { color: var(--ink-4); }
+.legal__doc strong { color: var(--ink); font-weight: 600; }
+.legal__doc a { color: var(--ink); border-bottom: 1px solid var(--ink-4); word-break: break-word; }
+.legal__doc a:hover { border-bottom-color: var(--ink); }
+.legal__doc code { font-family: var(--mono); font-size: .88em; }
+/* The objection right has to stand apart from the rest (Art. 21(4) GDPR),
+   so it gets a rule of its own. Not red: red is the action colour. */
+.legal__doc .legal__callout {
+  margin-top: 22px; padding: 4px 0 4px 20px;
+  border-left: 2px solid rgba(255,255,255,.45);
+}
+.legal__callout p { color: var(--ink); }
 
 /* ── narrower ───────────────────────────────────────────── */
 
