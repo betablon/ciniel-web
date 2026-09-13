@@ -353,6 +353,11 @@ ul, ol { padding: 0; list-style: none; }
   display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px; position: relative; z-index: 2;
 }
+.plans__fine {
+  position: relative; z-index: 2;
+  margin-top: 18px; max-width: 44em;
+  font-size: 13px; line-height: 1.6; color: var(--ink-3);
+}
 .plan {
   display: flex; flex-direction: column; gap: 16px;
   padding: 36px 32px 34px;
