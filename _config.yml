@@ -1,0 +1,7 @@
+# GitHub Pages builds this repo from its root, so everything here is published
+# unless it is listed below. The pages carry no front matter, so the build
+# copies them unchanged. The dev server and the design record stay in the repo,
+# off ciniel.app.
+exclude:
+  - scripts
+  - site-design
